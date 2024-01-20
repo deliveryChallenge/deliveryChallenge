@@ -3,6 +3,7 @@ package com.challnege.delivery.domain.restaurant.entity;
 import com.challnege.delivery.domain.member.entity.Member;
 import com.challnege.delivery.domain.menu.entity.Menu;
 import com.challnege.delivery.domain.review.entity.Review;
+import com.challnege.delivery.global.audit.Auditable;
 import com.challnege.delivery.global.audit.Category;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -14,7 +15,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Restaurant {
+public class Restaurant extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
