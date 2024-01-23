@@ -1,8 +1,7 @@
 package com.challnege.delivery.global.elasticsearch;
 
 import com.challnege.delivery.global.audit.Category;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
@@ -11,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
+@NoArgsConstructor
 public class ResDocResponseDto {
 
     private long id;
@@ -24,6 +24,13 @@ public class ResDocResponseDto {
         this.restaurantName = restaurantName;
         this.address = address;
         this.category = category;
+    }
+
+    public ResDocResponseDto(RestaurantDocument restaurantDocument) {
+        this.id = restaurantDocument.getId();
+        this.restaurantName = restaurantDocument.getRestaurantName();
+        this.address = restaurantDocument.getAddress();
+        this.category = restaurantDocument.getCategory();
     }
 
     public static ResDocResponseDto fromDocsEntity(RestaurantDocument restaurantDocument) {
